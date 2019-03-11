@@ -1,9 +1,9 @@
 console.log("*************Task_1(convert)***************")
 function convert(amount) {
-    let curs = 8;
-    return console.log(curs*amount);
+    const curs = 8;
+    return curs*amount;
 }
-convert(2); //16
+console.log(convert(2)); //16
 //********************************************
 console.log("***********Task_2(reverse)*****************")
 
@@ -14,9 +14,23 @@ function reverse(str) {
     {
         result = result + str[index];
     }
-    return console.log(result);
+    return result;
 }
-reverse('abc'); // 'cba'
+console.log(reverse('abc')); // 'cba'
+//********************************************
+console.log("***********Task_2(reverse->split)*****************")
+
+function reverseSplit(str) {
+    console.log(str);
+    return str.split('').reverse().join('');
+}
+console.log(reverseSplit('abc')); // 'cba'
+//********************************************
+console.log("***********Task_2(reverse->split2)*****************")
+
+const reverse2 = (str) => str.split('').reverse().join('');
+console.log(reverse2('abc')); // 'cba'
+
 
 //********************************************
 console.log("***********Task_3(printStairs)*****************")
@@ -34,6 +48,20 @@ printStairs(5);
 //###
 
 //********************************************
+console.log("***********Task_3(printStairs->recursion)*****************")
+
+function printStairsRec(count, t = '#') {
+    const print = (n) => {
+        if (count > n) {
+            console.log(t.repeat(n + 1))
+            print(n + 1)
+        }
+    }
+    print(0);
+}
+printStairsRec(5)
+
+//********************************************
 console.log("***********Task_4(sumRange)*****************")
 
 function sumRange(start, end) {
@@ -43,10 +71,10 @@ function sumRange(start, end) {
         sum += point;
         point++;
     }
-    console.log(sum);
+    return(sum);
 }
-sumRange(2, 4); // 9
-sumRange(-1, 3); // 5
+console.log(sumRange(2, 4)); // 9
+console.log(sumRange(-1, 3)); // 5
 
 //********************************************
 console.log("***********Task_5(min)*****************")
@@ -63,6 +91,24 @@ function min(a, b, c) {
 }
 min(10, 5, 11); // 5
 min(3, 8, 4); // 3
+
+//********************************************
+console.log("***********Task_5(min)->Math.min*****************")
+
+function minMath(a, b, c) {
+    return Math.min(a, b, c);
+}
+console.log(minMath(10, 5, 11)); // 5
+console.log(minMath(3, 8, 4)); // 3
+
+
+//********************************************
+console.log("***********Task_5(min)->apply*****************")
+
+const minAp = (arg) => Math.min.apply(null, arg);
+
+console.log(minAp([10, 5, 11])); // 5
+console.log(minAp([3, 8, 4])); // 3
 
 //********************************************
 console.log("***********Task_6(printPyramid)*****************")
@@ -92,9 +138,9 @@ function firstAndLastToUpper(str) {
     let lastLetter= str[str.length-1].toUpperCase();
     let midleLeter = str.substr(1,str.length-2);
     let res = firstLetter + midleLeter + lastLetter;
-    console.log("str", res);
+    return res;
 }
-firstAndLastToUpper('abc') // 'AbC'
+console.log(firstAndLastToUpper('abc')) // 'AbC'
 
 //********************************************
 console.log("***********Task_8(cursorCheck)*****************")
@@ -109,6 +155,13 @@ function cursorCheck(str) {
 cursorCheck('Hello I am OstaP') // true
 cursorCheck('Superman is here') // false
 
+//********************************************
+console.log("***********Task_8(cursorCheck->boolean)*****************")
+
+const cursorCheckB = (str) => (str.toLowerCase().includes("ironman") || str.toLowerCase().includes("cursor") || str.toLowerCase().includes("ostap"));
+
+console.log(cursorCheckB('Hello I am OstaP')); // true
+console.log(cursorCheckB('Superman is here')); // false
 
 //********************************************
 console.log("***********Task_9(toUppercase)*****************")
@@ -120,15 +173,29 @@ function toUppercase(str) {
         uStr = str.charCodeAt(index);
         newStr += String.fromCharCode(uStr-32);
     }
-    console.log(newStr);
+    return newStr;
 }
-toUppercase('abc'); // 'ABC'
+console.log(toUppercase('abc')); // 'ABC'
+
+console.log("***********Task_9(toUppercase->mal.call)*****************")
+
+const toUpperCase = (str3) =>
+Array.prototype.map.call(str3, (el, i) => {
+    const charCode = el.charCodeAt(0);
+
+const isLowerCaseChar = charCode >= 97 && charCode <= 122;
+if(isLowerCaseChar) {
+    return String.fromCharCode(charCode - 32);
+}
+return el;
+}).join('');
+
+console.log(toUpperCase('abc'));
 
 //********************************************
 console.log("***********Task_10_1(removeDuplicationLetters)*****************")
 
 function removeDuplicationLetters(str) {
-    console.log("Start:   Hello I am Iron Man");
     let strF = str;
     for(let i = 0; i < str.length; i++){
         while (strF.indexOf(strF[i],i+1) !== -1){
@@ -141,15 +208,14 @@ function removeDuplicationLetters(str) {
             }
         }
     }
-    console.log("Result: ", strF);
+    return strF;
 }
-removeDuplicationLetters('Hello I am Iron Man') // 'Helo I am rn M'
+console.log(removeDuplicationLetters('Hello I am Iron Man')); // 'Helo I am rn M'
 
 //********************************************
 console.log("***********Task_10_2(removeDuplicationLetters with case-insensitive)*****************")
 
 function removeDuplicationLetters2(str) {
-    console.log("Start:   Hello I am Iron Man");
     let strF = str;
     let strFlow = str.toLowerCase();
     for(let i = 0; i < strF.length; i++){
@@ -164,9 +230,17 @@ function removeDuplicationLetters2(str) {
             }
         }
     }
-    console.log("Result: ", strF);
+    return strF;
 }
-removeDuplicationLetters2('Helllo I am Iron Man') // 'Helo I am rn '
+console.log(removeDuplicationLetters2('Helllo I am Iron Man')); // 'Helo I am rn '
+
+//********************************************
+console.log("***********Task_10_1(removeDuplicationLetters->reduce)*****************")
+
+unique_char = str => str.split('').reduce((s, v)  =>
+(!s.toLowerCase().includes(v.toLowerCase()) || v === ' ') ? (s + v) : s
+);
+console.log(unique_char("Hello I am Iron Man"));
 
 //********************************************
 console.log("***********Task_11(fibonacci)*****************")
@@ -174,20 +248,20 @@ function fibonacci(n) {
     let res = 1;
     let f = [1, 1];
     if (n === 1) {
-        return console.log(res);
+        return res;
     } else if (n === 2) {
-        return console.log(res);
+        return res;
     } else if (n === 3 || n > 3) {
         for(let i = 2; i < n; i++){
             res = (f[i-1]) + (f[i-2]);
             f[i] = (f[i-1]) + (f[i-2]);
         }
-        console.log(res);
+        return res;
     }
  }
-fibonacci(3); // 2
-fibonacci(5); // 5
-fibonacci(7); // 13
+console.log(fibonacci(3)); // 2
+console.log(fibonacci(5)); // 5
+console.log(fibonacci(7)); // 13
 
 
 //*****************************end*******************************
