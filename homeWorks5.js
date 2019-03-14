@@ -143,17 +143,17 @@ function firstAndLastToUpper(str) {
 console.log(firstAndLastToUpper('abc')) // 'AbC'
 
 //********************************************
-console.log("***********Task_8(cursorCheck)*****************")
-
-function cursorCheck(str) {
-    str = str.toLowerCase();
-    if (str.includes("ironman") || str.includes("cursor") || str.includes("ostap")){
-        console.log("true");
-    } else console.log("false");
-}
-
-cursorCheck('Hello I am OstaP') // true
-cursorCheck('Superman is here') // false
+// console.log("***********Task_8(cursorCheck)*****************")
+//
+// function cursorCheck(str) {
+//     str = str.toLowerCase();
+//     if (str.includes("ironman") || str.includes("cursor") || str.includes("ostap")){
+//         console.log("true");
+//     } else console.log("false");
+// }
+//
+// cursorCheck('Hello I am OstaP') // true
+// cursorCheck('Superman is here') // false
 
 //********************************************
 console.log("***********Task_8(cursorCheck->boolean)*****************")
